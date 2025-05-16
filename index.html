@@ -12,12 +12,20 @@
     <canvas id="unity-canvas" width=960 height=600 style="width: 100%; height: 100%"></canvas>
 </div>
 <script>
+    mergeInto(LibraryManager.library, {
+
+        ReturnFocus: function () {
+            window.focus();
+        },
+    });
+</script>
+<script>
     const buildUrl = "Build";
     const loaderUrl = buildUrl + "/EvolutionMonsterPage.loader.js";
     const config = {
-        dataUrl: buildUrl + "/abbd0669c7d28e6bc6af40a49463402c.data.unityweb",
-        frameworkUrl: buildUrl + "/e9e8d18d6c8626895edd1acdd4dd92db.js.unityweb",
-        codeUrl: buildUrl + "/32064b21de47b0eb943ca62211b2b995.wasm.unityweb",
+        dataUrl: buildUrl + "/77b1ca8ed5d6e37247796c85ebb108b2.data.unityweb",
+        frameworkUrl: buildUrl + "/f3599fb67a3c0a03aef84fbc64d7ac5f.js.unityweb",
+        codeUrl: buildUrl + "/884d6b31765c94673d71c11a9c87562e.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "MonsterEvolution",
