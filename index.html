@@ -8,41 +8,48 @@
     <script src="playDeckBridge.js"></script>
 </head>
 <body class="dark">
-    <div id="unity-container" style="position: absolute; width: 100%; height: 100%">
-        <canvas id="unity-canvas" width=960 height=600 style="width: 100%; height: 100%"></canvas>
-    </div>
-    <script>
-        const buildUrl = "Build";
-        const loaderUrl = buildUrl + "/EvolutionMonsterPage.loader.js";
-        const config = {
-            dataUrl: buildUrl + "/f045ab378592b44c53a84a18d38132da.data.unityweb",
-            frameworkUrl: buildUrl + "/a73df7379c90fa99a8816ba1aaa295e9.js.unityweb",
-            codeUrl: buildUrl + "/c307527f249e6a7145b4d2919c308612.wasm.unityweb",
-            streamingAssetsUrl: "StreamingAssets",
-            companyName: "DefaultCompany",
-            productName: "MonsterEvolution",
-            productVersion: "0.1",
-        };
+<div id="unity-container" style="position: absolute; width: 100%; height: 100%">
+    <canvas id="unity-canvas" width=960 height=600 style="width: 100%; height: 100%"></canvas>
+</div>
+<script>
+    mergeInto(LibraryManager.library, {
 
-        const container = document.querySelector("#unity-container");
-        const canvas = document.querySelector("#unity-canvas");
+        ReturnFocus: function () {
+            window.focus();
+        },
+    });
+</script>
+<script>
+    const buildUrl = "Build";
+    const loaderUrl = buildUrl + "/EvolutionMonsterPage.loader.js";
+    const config = {
+        dataUrl: buildUrl + "/1a2597112f9b5655e63bdcc188402360.data.unityweb",
+        frameworkUrl: buildUrl + "/f9d6de726816fc235e006000d6743ec4.js.unityweb",
+        codeUrl: buildUrl + "/9d13c620a20b7ba2fc421b94311aa1ca.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "MonsterEvolution",
+        productVersion: "0.1",
+    };
 
-        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-            config.devicePixelRatio = window.devicePixelRatio;
-        }
+    const container = document.querySelector("#unity-container");
+    const canvas = document.querySelector("#unity-canvas");
 
-        const script = document.createElement("script");
-        script.src = loaderUrl;
-        script.onload = () => {
-            const playdeckBridgeInstance = playDeckBridge();
-            createUnityInstance(canvas, config, (progress) => {
-                playdeckBridgeInstance?.setLoadingProgress(progress * 100)
-            }).then(unityInstance => {
-                playdeckBridgeInstance?.init(unityInstance);
-            });
-        };
-        document.body.appendChild(script);
-    </script>
-    <script src="focusPlugin.js"></script>
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        config.devicePixelRatio = window.devicePixelRatio;
+    }
+    
+    const script = document.createElement("script");
+    script.src = loaderUrl;
+    script.onload = () => {
+        const playdeckBridgeInstance = playDeckBridge();
+        createUnityInstance(canvas, config, (progress) => {
+            playdeckBridgeInstance?.setLoadingProgress(progress * 100)
+        }).then(unityInstance => {
+            playdeckBridgeInstance?.init(unityInstance);
+        });
+    };
+    document.body.appendChild(script);
+</script>
 </body>
 </html>
