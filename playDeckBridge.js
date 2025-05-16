@@ -29,6 +29,7 @@ var playDeckBridge = (function() {
         else if (playdeck.method === 'invoiceClosed') {
             console.log(playdeck.value);
             _unityInstance?.SendMessage("PlayDeckBridge", "InvoiceClosedHandler", JSON.stringify(playdeck.value));
+            window.blur();
         }
         else if (playdeck.method === "getShareLink") {
             console.log(playdeck.value);
@@ -56,7 +57,7 @@ var playDeckBridge = (function() {
         }
         else if (playdeck.method === "startAd") {
             console.log(playdeck.value);
-            _unityInstance?.SendMessage("PlayDeckBridge", "StartAdHandler", JSON.stringify(playdeck.value) );
+            _unityInstance?.SendMessage("PlayDeckBridge", "StartAdHandler", JSON.stringify(playdeck.value));
         }
     }
 
